@@ -1,5 +1,5 @@
 {
-  "name": "sprite-maker",
+  "name": "kiriri",
   "version": "1.0.0",
   "description": "galgame引擎",
   "main": "src/start.js",
