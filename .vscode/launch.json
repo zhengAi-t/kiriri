@@ -1,0 +1,41 @@
+{
+  // 使用 IntelliSense 了解相关属性。 
+  // 悬停以查看现有属性的描述。
+  // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    // {
+    //   //配置打包当前文件到dist目录，并且启动chrome调试（不好用，后来放弃了）
+    //   "name": "Attach to Chrome",
+    //   "port": 9222,
+    //   "request": "attach",
+    //   "type": "pwa-chrome",
+    //   "webRoot": "${workspaceFolder}",
+    //   "preLaunchTask": "compile",
+    //   "skipFiles": [
+    //     "<node_internals>/**",
+    //     "${workspaceFolder}/node_modules/**/*.js",
+    //     "${workspaceFolder}/node_modules/\\.*"
+    //   ]
+    // },
+    // {
+    //   //配置打包test文件夹中的单元测试代码，并且启动node调试
+    //   "type": "node",
+    //   "request": "launch",
+    //   "name": "webpack debugger",
+    //   "program":"${fileDirname}/main.js",
+    //   "preLaunchTask":"pack",
+    //   "sourceMaps": true,
+    //   "console": "integratedTerminal",
+    //   "cwd": "${fileDirname}",
+    // },
+    {
+      //这段配置仅仅是在vscode中，以当前文件为入口打包代码，用于单元测试，
+      //因为已经在vscode在开了本地服务器用于调试，所以只需要提供构建的main.js和source map就行
+      "preLaunchTask": "compile",
+      "name": "Launch",
+      "type": "pwa-node",
+      "request": "attach"
+    }
+  ]
+}

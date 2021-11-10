@@ -1,0 +1,63 @@
+{
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version":"2.0.0",
+  "tasks":[{
+    //打包当前打开的文件到dist目录，附带source-map
+      "label":"compile",
+      "type":"shell",
+      "command":"webpack",
+      "args":[
+        "${file}",
+        "-o",
+        "./dist",
+        // "./src/render/script0/render/pixi/test",
+        // "--target",
+        // "node",
+        "--mode",
+        "development",
+        "--devtool",
+        "source-map",
+        "--config",
+        "./webpack.config.js"
+      ]
+    },
+    {
+      //打包当前打开的文件到当前打开文件的目录，附带source-map（用于单元测试）
+      "label":"pack",
+      "type":"shell",
+      "command":"webpack",
+      "args":[
+        "${file}",
+        "-o",
+        "${fileDirname}/",
+        // "./src/render/script0/render/pixi/test",
+        "--target",
+        "node",
+        "--mode",
+        "development",
+        "--devtool",
+        "source-map",
+        "--config",
+        "./webpack.config.js",
+        // "-w"
+      ]
+    },
+    {
+      "label":"release",
+      "type":"shell",
+      "command":"webpack",
+      "args":[
+        "-o",
+        "./dist",
+        // "./src/render/script0/render/pixi/test",
+        // "--target",
+        // "node",
+        "--mode",
+        "production",
+        "--config",
+        "./webpack.config.js"
+      ]
+    },
+  ]
+}
