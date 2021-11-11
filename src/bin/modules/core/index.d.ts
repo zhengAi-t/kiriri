@@ -3,7 +3,7 @@ interface Script{
   /**
    * 文件名
    */
-  filename:string,
+  filename?:string,
   /**
    * 名称
    */
@@ -14,8 +14,8 @@ interface Script{
   content:Inst[]
 }
 interface stackInfo{
-  filename:string,
-  name:string,
+  filename?:string,
+  name?:string,
   index:number
 }
 interface Snapshot{
@@ -32,14 +32,17 @@ interface Eventsys{
   append:(name:any,callback:any)=>void;
   appendOnce:(name:any,callback:any)=>void;
 }
-interface Core{
+export default interface Core{
   /**
    * 现有事件
-   * requestComponent 组件事件请求，流程挂起
-   * componentReturn  组件操作完成，流程继续
-   * requestScript    加载脚本请求，流程挂起
-   * scriptGot        脚本已经获得，流程继续
-   * requestSetRecord 请求绑定record
+   * requestUI
+   * requestUIReturn
+   * requestVoice
+   * requestRender
+   * requestScript
+   * requestScriptReturn
+   * requestExtension
+   * ...
    */
   event:Eventsys,
   /**
@@ -69,5 +72,3 @@ interface Core{
    */
   hand(config:object):any
 }
-declare var core:Core;
-export default core;

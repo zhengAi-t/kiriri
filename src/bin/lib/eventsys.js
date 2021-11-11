@@ -37,7 +37,7 @@ function EventSys(){
       collects[name].once=[];
       once.forEach(s=>s.apply(null,argvs));
       reflash();
-    })
+    });
   }
   /**
    * 绑定一个事件,

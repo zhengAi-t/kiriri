@@ -30,9 +30,7 @@ interface ShortCut{
    */
   unregist(ket:string,callback:Function):void
 }
-interface Keyboard{
+export default interface Keyboard{
   shortcut:ShortCut,
   raw:Capture,
 }
-declare var keyboard:Keyboard;
-export default keyboard;

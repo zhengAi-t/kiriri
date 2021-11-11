@@ -3,7 +3,8 @@
  */
 function getItem(name){
   if(name||name===0){
-    let raw=localStorage.getItem(name)||"{}";
+    let raw=localStorage.getItem(name);
+    if(!raw)return;
     return JSON.parse(raw).item;
   }
   let result={};

@@ -20,7 +20,7 @@
     "webpack-encoding-plugin": "^0.3.1"
   },
   "scripts": {
-    "release": "webpack -o ./dist --mode production --config ./webpack.config.js",
+    "release": "webpack ./src/start.js -o ./dist --mode production --config ./webpack.config.js",
     "build":"webpack ./src/index.js -o ./dist --mode development --devtool source-map --config ./webpack.config.js"
   }
 }

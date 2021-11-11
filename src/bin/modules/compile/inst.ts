@@ -1,5 +1,5 @@
 export interface Inst{
-  type:Number,
+  type:number,
   data:{
     [propName:string]:any
   }

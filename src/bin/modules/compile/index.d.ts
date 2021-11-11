@@ -7,4 +7,6 @@ interface CompileResult{
     [propName:string]:Inst[]
   }
 }
-export function compile(code:string):CompileResult;
+export default interface Compile{
+  compile(code:string):CompileResult;
+}

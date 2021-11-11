@@ -10,9 +10,7 @@ interface Area{
 interface AreaUtil{
   createArea(x:number,y:number,w:number,h:number):Area
 }
-interface Mouse{
+export default interface Mouse{
   raw:Capture,
   area:AreaUtil
 }
-declare var mouse:Mouse;
-export default mouse;
