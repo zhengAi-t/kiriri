@@ -8,7 +8,7 @@ async function read(name,offset,length){
   let result=await readStream(stream_);
   let fileType=name.match(/\.[a-zA-Z\d]+$/);
   fileType=fileType?Types[fileType[0].slice(1)]:'';
-  if(!fileType)console.error('file type encorrect');
+  if(!fileType)console.error('file type encorrect',name);
   return new Blob(result,{type:fileType});
 }
 async function stream(name,offset,length){
@@ -19,7 +19,7 @@ async function stream(name,offset,length){
   if(typeof length!=='number')length=file.length;
   let stream=data.createReadStream({
     start:baseLength+file.offset+offset,
-    end:baseLength+file.offset+length
+    end:baseLength+file.offset+length-1
   });
   return stream;
 }
