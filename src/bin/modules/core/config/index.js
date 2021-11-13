@@ -65,6 +65,8 @@ import application from '../../../lib/buildup';
   // 默认配置的启动事件，发送请求开始页面的信号
   core.event.on("GameStart",signalGameStart);
   function signalGameStart(){
-    ui.signal('startPage','show');
+    let filename='./storys/index.md';
+    core.event.emit("requestScript",filename);
+    core.event.once("requestScriptReturn",result=>core.pushScript({filename,content:result.main}));
   }
 })();

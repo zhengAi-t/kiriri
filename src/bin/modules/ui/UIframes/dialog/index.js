@@ -14,9 +14,9 @@ async function init(){
       x=0.22 y=0.706 zindex=200;
     put text id=sys_dialog_text width=0.601 fontSize=0.04
       x=0.2 y=0.79 zindex=200;
-    put picture id=sys_dialog_base file='./G00/__sys_dialog_base.png'
+    put picture id=sys_dialog_base file='ui/dialog_base.png'
       width=0.94 height=0.375 x=0.03 y=0.626 zindex=100 alpha=0;
-    put picture id=__sys_dialog_text_mask file='./G00/__sys_dialog_text_mask.png' alpha=0 zindex=-1;
+    put picture id=__sys_dialog_text_mask file='mask/__sys_dialog_text_mask.png' alpha=0 zindex=-1;
     hand {
       (async function(){
         let text=env.sprites.get("sys_dialog_text").sprite;
@@ -41,7 +41,7 @@ async function show(config){
     set id=sys_dialog_base alpha=1;
     set id=sys_dialog_name text='${config.name||''}' alpha=1;
     set id=sys_dialog_text text='${config.text}' alpha=1 mask=__sys_dialog_text_mask;
-    // put picture id=__sys_dialog_text_mask file='./G00/__sys_dialog_text_mask.png';
+    // put picture id=__sys_dialog_text_mask file='mask/__sys_dialog_text_mask.png';
     set id=__sys_dialog_text_mask ease=2s x= -1.78 to 0.2
       width=2.58 height=0.15 y=0.79 alpha=1;
   `);

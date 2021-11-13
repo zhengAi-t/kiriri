@@ -13,7 +13,7 @@ application.ui.then(ui=>ui.addUIframe('startPage',{show}));
 let btnAreas=[];
 function show(){
   render.postCode(`
-    put picture file='./G00/__sys_title_base03.bmp' 
+    put picture file='ui/title_base.bmp' 
       width=1 height=1 alpha=1 id=title_base zindex=0;
     
     set id=title_base ease=1500ms alpha=0 to 1;

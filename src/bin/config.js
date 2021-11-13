@@ -9,6 +9,7 @@ import "./modules/render";
 import "./modules/save";
 import "./modules/ui";
 import "./modules/voice";
+import "./modules/console";
 
 //需要对外提供的所有工具函数
 let config={};

@@ -23,11 +23,11 @@
     //   "type": "node",
     //   "request": "launch",
     //   "name": "webpack debugger",
-    //   "program":"${fileDirname}/main.js",
+    //   "program":"${workspaceFolder}/dist/main.js",
     //   "preLaunchTask":"pack",
     //   "sourceMaps": true,
     //   "console": "integratedTerminal",
-    //   "cwd": "${fileDirname}",
+    //   "cwd": "${workspaceFolder}",
     // },
     {
       //这段配置仅仅是在vscode中，以当前文件为入口打包代码，用于单元测试，

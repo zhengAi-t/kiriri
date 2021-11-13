@@ -30,7 +30,7 @@
       "args":[
         "${file}",
         "-o",
-        "${fileDirname}/",
+        "${workspaceFolder}/dist",
         // "./src/render/script0/render/pixi/test",
         "--target",
         "node",

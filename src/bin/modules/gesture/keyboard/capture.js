@@ -11,8 +11,8 @@ window.addEventListener("keyup",handlKeyup);
 window.addEventListener('blur',handlBlur);
 function handlKeydown(e){
   let key=keyMap[e.code];
-  e.preventDefault();
-  e.stopPropagation()
+  // e.preventDefault();
+  // e.stopPropagation()
   if(!key||keyStatus[key])return;
   keyStatus[key]=true;
   event.emit(key+'_down');
