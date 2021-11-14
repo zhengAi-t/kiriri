@@ -3,19 +3,21 @@ import path from "../../../lib/path";
 import Mime from './mime';
 let Types=Mime.mime;
 async function read(name,offset,length){
+  console.debug('file.webtorrent','read',name);
   let stream_=await stream(name,offset,length);
   if(!stream_)return;
   let result=await readStream(stream_);
   let fileType=name.match(/\.[a-zA-Z\d]+$/);
   fileType=fileType?Types[fileType[0].slice(1)]:'';
   if(!fileType)console.error('file type encorrect',name);
+  console.debug('file.webtorrent','read success',name);
   return new Blob(result,{type:fileType});
 }
 async function stream(name,offset,length){
   if(typeof name!=='string'||!name)return;
   offset=offset||0;
   let file=(files?files:await signalMeta()).get(path.normalize(name));
-  if(!file)return;
+  if(!file)return console.error('file.webtorrent','file not found',name);
   if(typeof length!=='number')length=file.length;
   let stream=data.createReadStream({
     start:baseLength+file.offset+offset,
@@ -26,8 +28,9 @@ async function stream(name,offset,length){
 function readStream(stream){
   let result=[];
   stream.on('data',chunk=>result.push(chunk));
+  stream.on('error',()=>console.error('file.webtorrent.readStream','failed'));
   return new Promise(rs=>{
-    stream.on('end',()=>rs(result));
+    stream.on('end',()=>(rs(result),stream.destroy()));
   });
 }
 //files 所有文件的元数据{name,offset,length}
@@ -38,6 +41,9 @@ let files,data,baseLength,signal,resolveSignal;
 function signalMeta(){
   if(signal)return signal;
   signal=new Promise(rs=>resolveSignal=rs);
+  console.debug('file.webtorrent','init start');
+  signal.then(()=>console.debug('file.webtorrent','init success'))
+    .catch(()=>console.error('file.webtorrent','init failed'));
   return signal;
 }
 export function addResource(magnetURI){
