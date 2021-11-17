@@ -2,7 +2,7 @@ import  {addResource} from './webtorrent';
 //本文件为配置文件，下面的是默认的配置
 //需要配置这个模块是如何得到magnetURI的
 //这里的代码不属于引擎自身
-addResource('magnet:?xt=urn:btih:a451ae06f1ad46bfbf87d518cce2f2997f3f552c&dn=game.pak&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337&tr=udp%3A%2F%2Fexplodie.org%3A6969&tr=udp%3A%2F%2Ftracker.empire-js.us%3A1337&tr=wss%3A%2F%2Ftracker.btorrent.xyz&tr=wss%3A%2F%2Ftracker.openwebtorrent.com');
+addResource('magnet:?xt=urn:btih:c53baf7f52c9382d8efce16a34898b2044c168a6&dn=game.pak&tr=wss%3A%2F%2Ftomodachi.top%3A19673&tr=wss%3A%2F%2Ftracker.btorrent.xyz&tr=wss%3A%2F%2Ftracker.openwebtorrent.com');
 // import application from '../../../lib/buildup';
 // if(location){
 //   let match=location.href.match(/magnet:\?[a-zA-Z%=&\.\-:]+/);
