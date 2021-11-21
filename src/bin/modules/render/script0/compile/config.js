@@ -1,4 +1,4 @@
-export let keywords={
+let keywords={
   'put':'put',
   '放置':'put',
   'set':'set',
@@ -58,3 +58,6 @@ export let keywords={
   'mask':'mask',
   '蒙版':'mask',
 };
+export default{
+  keywords
+}

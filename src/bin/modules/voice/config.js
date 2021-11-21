@@ -6,8 +6,4 @@ import voice from "./voice";
 import script from "./script0/index";
 let module=voice.init({script});
 
-//配置使用模块自动化构建系统，将这个模块挂载到系统上
-import application from '../../lib/buildup';
-application.voice=module;
-
 export default module;

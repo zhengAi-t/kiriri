@@ -4,7 +4,8 @@
  * 编译put指令时没有对属性值分类，
  * 可能造成值解析不准确或者值的类型出错
  */
-import {keywords} from './config';
+import config from './config';
+let keywords=config.keywords;
 export function compile(code){
   let index=0,length=code.length,content=[];
   /**

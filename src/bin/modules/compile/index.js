@@ -1,3 +1,8 @@
-import './config';
-import compile from './compile';
-export default compile;
+import env from "./env";
+import './insts/index';
+let mudules={
+  compile:env.compileMain
+}
+import application from "../buildup";
+application.compile=mudules;
+export default mudules;

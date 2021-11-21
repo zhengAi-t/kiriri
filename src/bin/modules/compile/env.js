@@ -1,4 +1,6 @@
+import config from './config';
 let env={};
+env.keywords=config.keywords;
 env.compileMain=function(code){
   env.code=code;
   env.index=0;

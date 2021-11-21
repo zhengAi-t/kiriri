@@ -4,13 +4,14 @@
  */
 import core from '../core';
 import {init} from '../core';
-import application from '../../../lib/buildup';
+import application from '../../buildup';
 (async function(){
   //使用自动化模块加载系统，具体见库代码
   application.core=core;
 
-  application.save.then(save=>init({record:save.values}));
-
+  let save=await application.save;
+  let cache=await application.cache;
+  init({record:save.values,cache});
 
   //需要执行UI操作的中断,普通UI，没有控制操作
   //中断返回为 requestUIReturn(config)

@@ -1,5 +1,5 @@
 let env={};
-import application from '../../../../../lib/buildup';
+import application from '../../../../buildup';
 application.file.then(file=>env.file=file);
 import * as PIXI from 'pixi.js';
 env.PIXI=PIXI;

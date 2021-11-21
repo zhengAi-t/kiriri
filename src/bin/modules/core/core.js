@@ -89,7 +89,7 @@ function loadSnapshot(snapshot){
   function pushScript(index){
     if(index>=length)return process();
     env.event.emit("requestScript",stack[index]);
-    env.event.once("scriptGot",content=>{
+    env.event.once("requestScriptReturn",content=>{
       let stackInfo=Copy.deepCopy(stack[index]);
       stackInfo.content=content;
       env.stack.push(stackInfo);

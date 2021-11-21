@@ -1,5 +1,4 @@
+//选择一个文件模块
 // import file from './default';
 import file from './webtorrent';
-import application from '../../lib/buildup';
-application.file=file;
 export default file;

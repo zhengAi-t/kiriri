@@ -5,4 +5,6 @@
  * 也可以放进这个地方统一管理
  */
 import gestures from './config';
+import application from '../buildup';
+application.gesture=gestures;
 export default gestures;

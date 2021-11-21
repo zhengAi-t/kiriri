@@ -1,7 +1,7 @@
 import Cache from "../../../../../../lib/cache";
 import env from "../env";
 import config from './config';
-import application from '../../../../../../lib/buildup';
+import application from '../../../../../buildup';
 import * as PIXI from 'pixi.js';
 env.Cache=Cache;
 env.cache=Cache.createCache({

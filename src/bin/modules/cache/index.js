@@ -48,7 +48,8 @@ function defaultCacheConfig(config){
   config.getSize=config.getSize||(()=>1024*1024);
   config.destory=config.destory||(()=>void(0));
 }
-if(config.application)config.application.cache={createCache,getCache};
+import application from '../buildup';
+application.cache={createCache,getCache};
 export default{
   createCache,getCache
 }

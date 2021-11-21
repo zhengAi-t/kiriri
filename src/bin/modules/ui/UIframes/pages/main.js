@@ -1,4 +1,4 @@
-import application from '../../../../lib/buildup';
+import application from '../../../buildup';
 let render;
 let gesture;
 let core;

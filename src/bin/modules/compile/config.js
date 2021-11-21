@@ -28,8 +28,6 @@ let keywords={
   'wait':'wait',
   '等待':'wait',
 };
-import env from "./env";
-env.keywords=keywords;
-import compile from "./compile";
-import application from "../../lib/buildup";
-application.compile=compile;
+export default{
+  keywords
+}

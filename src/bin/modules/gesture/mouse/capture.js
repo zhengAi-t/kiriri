@@ -4,7 +4,7 @@
  * 这里捕捉鼠标动作
  * 限制事件触发频率0.1
  */
-import application from '../../../lib/buildup';
+import application from '../../buildup';
 let render;
 application.render.then(render_=>render=render_);
 import throttle from '../../../lib/throttle';
