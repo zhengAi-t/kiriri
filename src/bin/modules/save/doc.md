@@ -1,12 +1,15 @@
 # 描述
-提供对于用户游戏数据的管理，
-注意不是静态的游戏资源，是用户产生的游戏数据，（比如存档或者保存的设置之类的）
+> 描述已修改
+> 旧版描述：
+> 提供对于用户游戏数据的管理，
+> 注意不是静态的游戏资源，是用户产生的游戏数据，（比如存档或者保存的设置之类的）
+提供对于游戏数据的保存，这里面包括状态保存，临时数据保存，用户产生的游戏数据的保存
 # 接口
 + values
-
+这个接口专门用来保存游戏状态
 保存变量式的用户数据，可以深度递归属性
 写属性会被更新到硬盘，不需要额外操作
-
+仅支持简单的数据类型
 **举例**
 ```
 import save from './save';
@@ -17,18 +20,10 @@ a.b.c=12;//跨级暂时没有实现
 a.a===12;
 a.b.c==='12';//跨级暂时没有实现
 ```
-+ storage
 
-保存文件
++ raw
+支持复杂的数据类型，支持大容量的数据，支持频繁读写
+除了基本数据类型之外，支持blob，（...其他未定）
+storage.save stroage.read storage.remove
 
-**举例**
-```
-import save from './save';
-let data='123456';
-let info={type:'string'};
-save.file.save('filename.xx',data,info);
-//下次读取的时候应该可以
-let result=save.file.read('filename.xx);
-result.data;//是二进制数据
-result.info.type;//字符串数据‘string’
-```
+

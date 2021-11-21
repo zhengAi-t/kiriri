@@ -1,11 +1,9 @@
-//a.a=0
-//a.b={}
 let monitor;
 export let init=config=>{
   let storage=config.storage;
   let data=storage.getItem('values')||{};
   let observer=Observer(data);
-  let commit=()=>storage.setItem('values',data);
+  let commit=()=>storage.save('values',data);
   monitor=config.monitor||(()=>0);
   return {commit,observer};
 }
