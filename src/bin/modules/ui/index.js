@@ -33,7 +33,7 @@ function check(UIObject){
 let ui={
   signal,addUIframe
 };
-import application from "../../lib/buildup";
+import application from "../buildup";
 application.ui=ui;
 import './UIframes/index';
 export default ui;

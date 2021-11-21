@@ -1,4 +1,4 @@
 import save from './config';
-import application from '../../lib/buildup';
+import application from '../buildup';
 application.save=save;
 export default save;

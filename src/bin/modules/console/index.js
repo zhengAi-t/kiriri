@@ -1,6 +1,6 @@
 console.log('已经打开debug模式，控制台可以使用部分的指令');
 //直接执行指令
-import application from '../../lib/buildup';
+import application from '../buildup';
 window.utls={core:{},render:{}}
 utls.core.postCode=async function(code){
   if(typeof code!=='string')return;
