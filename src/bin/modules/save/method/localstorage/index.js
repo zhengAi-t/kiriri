@@ -1,6 +1,7 @@
 import random from '../../../../lib/random';
 function save(name,value){
-  name=name||random.string();
+  if(!name)console.warn('name is null');
+  name=name||('tmp/'+random.string());
   value=encode(value);
   localStorage.setItem(name,value);
 }
