@@ -5,7 +5,7 @@ interface TurnCacheConfig{
   destory(item:any):void;
 }
 interface TurnCache{
-  get(id:any):any;
+  get(id:any):Promise<any>;
 }
 interface TurnCacheInit{
   createCache(config:TurnCacheConfig):TurnCache;

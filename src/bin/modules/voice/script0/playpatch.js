@@ -3,7 +3,8 @@
  */
 let play=HTMLAudioElement.prototype.play;
 HTMLAudioElement.prototype.play=function(){
-  play.call(this).catch(()=>getGesture(()=>play.call(this)));
+  play.call(this).then(()=>HTMLAudioElement.prototype.play=play)
+    .catch(()=>getGesture(()=>play.call(this)));
 }
 function getGesture(playCallback){
   let evntNames=["touchend","click","doubleclick","keydown"];
