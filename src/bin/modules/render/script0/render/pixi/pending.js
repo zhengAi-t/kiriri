@@ -3,7 +3,7 @@
  * 同一个精灵堆积了很多指令，只保留最后一个
  */
 import event from '../../../../../lib/eventsys';
-import InstCollect from './inst/index';
+import InstCollect from './inst';
 let queue=event.EventSys();
 function setInstSleep(inst){
   queue.once(inst.id,()=>InstCollect[inst.opt][inst.type||'default'](inst));

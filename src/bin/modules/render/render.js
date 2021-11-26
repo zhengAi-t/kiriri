@@ -8,7 +8,12 @@ async function postCode(code){
 }
 function init(config){
   render=config.render;
-  return {postCode,event:render.event,getWindow:render.getWindow}
+  return {
+    postCode,
+    event:render.event,
+    getWindow:render.getWindow,
+    prepareCode:render.prepareCode
+  };
 }
 export default {
   init

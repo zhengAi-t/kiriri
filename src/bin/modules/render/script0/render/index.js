@@ -1,2 +1,2 @@
-import pixi from './pixi/index';
+import pixi from './pixi';
 export default pixi;

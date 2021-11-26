@@ -6,7 +6,7 @@
  */
 import config from './config';
 let keywords=config.keywords;
-export function compile(code){
+function compile(code){
   let index=0,length=code.length,content=[];
   /**
    * 跳过空白
@@ -233,4 +233,7 @@ export function compile(code){
     } 
   }
   return content;
+}
+export default{
+  compile
 }
