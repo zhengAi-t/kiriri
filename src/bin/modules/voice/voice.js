@@ -5,7 +5,7 @@ function postCode(code){
 let script;
 function init(config){
   script=config.script;
-  return{postCode,event:script.event};
+  return{postCode,event:script.event,prepareCode:script.prepareCode};
 }
 export default {
   init

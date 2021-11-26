@@ -2,7 +2,8 @@
  * 控制流程
  */
 import env from './env';
-import './insts/index';
+import './insts';
+import preSignal from './persignal';
 import './cache';
 export let init=config=>env.record=config.record;
 import microTask from '../../lib/microTask';
@@ -21,6 +22,7 @@ env.process=function(){
     while(top.index<length){
       let inst=content[top.index++];
       if(env.execInst(inst))continue;
+      preSignal.signal(top.index);
       env.isRunning=false;
       return;
     }

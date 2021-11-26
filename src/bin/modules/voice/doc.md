@@ -7,6 +7,9 @@ postCode(code:string):void
 一个用于交流的事件模型（暂未绑定事件）
 event
 具体见代码
+
+下面的代码很可能将要执行，需要提前准备保证不要卡顿
+prepareCode
 # 默认设计
 **原因**
 
