@@ -1,8 +1,6 @@
-import Cache from "../../../../lib/cache";
 import application from '../../../buildup';
-import config from './config';
-let cache=Cache.createCache({
-  maxSize:config.maxSize||(40*1024*1024),
+let config={
+  cacheName:'voice-url',
   getItem:async function(filename){
     let blob=await(await application.file).read(filename);
     let url=URL.createObjectURL(blob);
@@ -14,5 +12,14 @@ let cache=Cache.createCache({
   destory(item){
     URL.revokeObjectURL(item.url);
   }
-});
-export default cache;
+};
+let cache;
+async function initCache(){
+  let init=await application.cache;
+  cache=init.createCache(config);
+}
+async function get(name){
+  if(!cache) await initCache();
+  return (await cache.get(name)).url;
+}
+export default {get};
