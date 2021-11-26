@@ -3,6 +3,7 @@
  */
 import env from './env';
 import './insts/index';
+import './cache';
 export let init=config=>env.record=config.record;
 import microTask from '../../lib/microTask';
 /**
@@ -80,23 +81,18 @@ function takeSnapshot(){
  * stack [filename,name,index]
  * values
  */
-function loadSnapshot(snapshot){
+async function loadSnapshot(snapshot){
   env.values=Copy.deepCopy(snapshot.values);
   env.event.clear();
   let stack=snapshot.stack;
   env.stack=[];
-  let length=stack.length;
-  function pushScript(index){
-    if(index>=length)return process();
-    env.event.emit("requestScript",stack[index]);
-    env.event.once("requestScriptReturn",content=>{
-      let stackInfo=Copy.deepCopy(stack[index]);
-      stackInfo.content=content;
-      env.stack.push(stackInfo);
-      pushScript(index+1);
-    });
+  for(let i=0,l=stack.length;i<l;i++){
+    let theStack=stack[i];
+    let script=await env.cache.get(theStack.filename);
+    let stackInfo=Copy.deepCopy(theStack);
+    stackInfo.content=theStack.name?script.blocks[theStack.name]:script.main;
+    env.stack.push(stackInfo);
   }
-  pushScript(0);
 }
 /**
  * 长臂干涉状态
