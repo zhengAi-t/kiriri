@@ -1,11 +1,7 @@
-import Cache from "../../../../../../lib/cache";
-import env from "../env";
-import config from './config';
 import application from '../../../../../buildup';
 import * as PIXI from 'pixi.js';
-env.Cache=Cache;
-env.cache=Cache.createCache({
-  maxSize:config.maxSize,
+let config={
+  cacheName:'render-pixi-texture',
   getItem:async function(filename){
     let result=await (await application.file).read(filename);
     let size=result.size;
@@ -22,10 +18,15 @@ env.cache=Cache.createCache({
   destory(item){
     item.texture.destory(true);
   }
-});
+};
+let cache;
+async function initCache(){
+  let init=await application.cache;
+  cache=init.createCache(config);
+}
 async function getTexture(filename){
-  let item=await env.cache.get(filename);
-  return item.texture;
+  if(!cache) await initCache();
+  return (await cache.get(filename)).texture;
 }
 export default {
   getTexture
