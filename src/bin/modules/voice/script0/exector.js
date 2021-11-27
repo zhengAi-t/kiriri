@@ -11,7 +11,7 @@
  * 和声音模块具体的结构设计，所以无法定义统一的接口
  */
 import Event from '../../../lib/eventsys';
-import cache from './cache/index';
+import cache from './cache';
 let event=Event.EventSys();
 let players={bgm:new Audio,cv:new Audio,se:new Map};
 function ease(audio,time,volume,callback){
@@ -38,7 +38,7 @@ function ease(audio,time,volume,callback){
 }
 let types={bgm:{},se:{},cv:{}};
 types.bgm.replace=async function(inst){
-  let url=(await cache.get(inst.file)).url;
+  let url=await cache.get(inst.file);
   let audio=players.bgm;
   if(!audio.paused)ease(audio,100,0,apply);
   else apply();
@@ -64,7 +64,7 @@ types.bgm.resume=function(inst){
   ease(players.bgm,inst.ease>=100?inst.ease:100,inst.volume||1);
 }
 types.cv.replace=async function(inst){
-  let url=(await cache.get(inst.file)).url;
+  let url=await cache.get(inst.file);
   let audio=players.cv;
   if(!audio.paused)ease(audio,100,0,apply);
   else apply();
@@ -80,7 +80,7 @@ types.cv.skip=function(){
   });
 }
 types.se.add=async function(inst){
-  let url=(await cache.get(inst.file)).url;
+  let url=await cache.get(inst.file);
   let audio=new Audio;
   audio.loop=!!inst.loop;
   players.se.set(inst.id,audio);

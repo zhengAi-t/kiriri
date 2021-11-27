@@ -28,8 +28,8 @@ function signal(index){
     count--;
     endIndex=i+1;
   }
-  if(insts.voice.length)env.event.emit("prepareVoice",insts.voice);
-  if(insts.render.length)env.event.emit("prepareRender",insts.render);
+  if(insts.voice.length)env.event.emit("prepareVoice",insts.voice,index);
+  if(insts.render.length)env.event.emit("prepareRender",insts.render,index);
 }
 export default{
   signal

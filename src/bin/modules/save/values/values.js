@@ -1,11 +1,13 @@
 let monitor;
-export let init=config=>{
+export let init=async config=>{
   let storage=config.storage;
-  let data=storage.getItem('values')||{};
+  let data=(await storage.read('values'))||{};
   let observer=Observer(data);
   let commit=()=>storage.save('values',data);
+  if(config.commit)config.commit(commit);
+  else console.warn('commit needed');
   monitor=config.monitor||(()=>0);
-  return {commit,observer};
+  return observer;
 }
 function Observer(object){
   if(typeof object!=='object'||object===null)return;

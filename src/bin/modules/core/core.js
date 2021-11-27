@@ -22,7 +22,7 @@ env.process=function(){
     while(top.index<length){
       let inst=content[top.index++];
       if(env.execInst(inst))continue;
-      preSignal.signal(top.index);
+      preSignal.signal(top.index-1);
       env.isRunning=false;
       return;
     }

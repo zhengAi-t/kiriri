@@ -36,7 +36,6 @@ import application from '../../buildup';
     render.postCode(code);
   }
 
-  //核心缺少功能 codeCache汇编码缓存,但是不影响代码编写
   //中断返回为 requestScriptReturn
   //因为可以自定义如何处理加载脚本的请求，有点时候为了性能或者加密，
   //举例：构建的时候就编译好代码，这里直接解析，同时不挂载编译模块
@@ -59,6 +58,12 @@ import application from '../../buildup';
     ui.signal(paras[0],paras[1]);
     setTimeout(core.goOn,0);
   }
+
+  //预加载声音的信号，如果想要体验优化，最好对这个事件进行绑定
+  core.event.on("prepareVoice",(content,index)=>voice.prepareCode(content,index));
+  
+  //预加载渲染的信号，如果想要体验优化，最好对这个事件进行绑定
+  core.event.on("prepareRender",(content,index)=>render.prepareCode(content,index));
 
   //建议把各种核心管理的工具函数都监听在核心这里
   //这样所有和引擎相关的代码都在模块中了，当然，

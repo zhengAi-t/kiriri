@@ -3,8 +3,6 @@ import env from '../env';
 import config from './config';
 import * as PIXI from 'pixi.js';
 import cache from '../cache';
-let keyword=config.mixName;
-let mixName=keyword.mixName;
 let put={};
 put.picture=async function(inst){
   let app=env.app;

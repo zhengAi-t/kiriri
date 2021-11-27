@@ -7,7 +7,7 @@ function parseCode(code){
   }
   let isChar=key=>(key>96&&key<123)||(key>64&&key<91);
   let isOthers=key=>key>255;
-  let converKeyword=word=>keywords[word]||console.error('unknown keyword',word);
+  let converKeyword=word=>keywords[word];
   function getKeyword(){
     ignoreBlank();
     let result=[];
@@ -17,8 +17,9 @@ function parseCode(code){
       result.push(code[i]);
     }
     code=code.slice(result.length);
-    let keyword=result.join('');
-    return converKeyword(keyword);
+    let keyword=converKeyword(result.join(''));
+    if(result.length&&!keyword)console.error('unknown keyword',word)
+    return keyword;
   }
   function parseHand(){
     ignoreBlank();

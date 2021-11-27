@@ -1,4 +1,4 @@
 import save from './config';
 import application from '../buildup';
-application.save=save;
+save.then(s=>application.save=s);
 export default save;

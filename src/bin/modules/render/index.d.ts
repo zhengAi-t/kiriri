@@ -8,7 +8,8 @@ export interface windowInfo{
 export default interface Render{
   // {postCode,event:render.event,getWindow:render.getWindow}
   //向这个模块投递代码
-  postCode(code:string):void;
-  event:Event;
-  getWindow():windowInfo;
+  postCode(code:string):void,
+  event:Event,
+  getWindow():windowInfo,
+  prepareCode(content:{code:string,index:number}[],index:number):void;
 }

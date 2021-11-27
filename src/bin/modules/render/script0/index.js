@@ -9,5 +9,8 @@ function postCode(code){
   render.exector(content);
 }
 export default{
-  postCode,event:render.event,getWindow:render.getWindow,render:render.prepareCode
+  postCode,
+  event:render.event,
+  getWindow:render.getWindow,
+  prepareCode:render.prepareCode
 }
