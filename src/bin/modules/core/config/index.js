@@ -65,6 +65,13 @@ import application from '../../buildup';
   //预加载渲染的信号，如果想要体验优化，最好对这个事件进行绑定
   core.event.on("prepareRender",(content,index)=>render.prepareCode(content,index));
 
+  //当渲染和声音模块出现忙等待时，锁定核心
+  voice.event.on('pendingTask',core.lock);
+  render.event.on('pendingTask',core.lock);
+
+  //当渲染和声音模块忙等待取消时，解锁核心
+  voice.event.on('freeTask',core.unlock);
+  render.event.on('freeTask',core.unlock);
   //建议把各种核心管理的工具函数都监听在核心这里
   //这样所有和引擎相关的代码都在模块中了，当然，
   //在外部引用core然后编写对应的工具函数也行，不过那样就会对外暴露过多的接口

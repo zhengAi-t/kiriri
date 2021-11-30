@@ -32,7 +32,7 @@ interface Eventsys{
   append:(name:any,callback:any)=>void;
   appendOnce:(name:any,callback:any)=>void;
 }
-export default interface Core{
+interface Core{
   /**
    * 现有事件
    * requestUI
@@ -68,7 +68,20 @@ export default interface Core{
    */
   goOn():void,
   /**
+   * 核心锁定,
+   * 核心锁定之后，不会继续往后运行，
+   * 这个时间调用goon也是不会继续运行的
+   */
+  lock():void,
+  /**
+   * 核心解锁，
+   * 如果在锁定期间请求过继续运行，将会在解锁的之后运行
+   */
+  unlock():void,
+  /**
    * 长臂干涉状态
    */
   hand(config:object):any
 }
+declare var core:Core;
+export default core;

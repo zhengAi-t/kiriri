@@ -97,6 +97,21 @@ async function loadSnapshot(snapshot){
   }
 }
 /**
+ * 核心锁定,
+ * 核心锁定之后，不会继续往后运行，
+ * 这个时间调用goon也是不会继续运行的
+ */
+function lock(){
+
+}
+/**
+ * 核心解锁，
+ * 如果在锁定期间请求过继续运行，将会在解锁的之后运行
+ */
+function unlock(){
+
+}
+/**
  * 长臂干涉状态
  * 暂时未实现
  */
@@ -118,5 +133,7 @@ export default{
   pushScript,
   takeSnapshot,
   goOn:env.process,
+  lock,
+  unlock,
   hand
 }
