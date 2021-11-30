@@ -5,15 +5,16 @@
  */
 let queue=[];
 let isworking=false;//是否正在运行准备程序
-import cache from "./cache";
+import config from "./config";
+let get=config.method.get;
 function work(){
   isworking=true;
   while(queue.length&&!queue[0].inst.file)queue.shift();
   if(!queue.length)return void(isworking=false);
   let file=queue.shift().inst.file;
-  cache.get(file).then(work).catch(()=>console.error('file get error'));
+  get(file).then(work).catch(()=>console.error('file get error'));
 }
-import compile from "./compile";
+import compile from "../compile";
 function prepareCode(content,index){
   while(queue.length&&queue[0].index<=index)queue.shift();
   queue.splice(queue.length,0,...[].concat(...content.map(s=>{

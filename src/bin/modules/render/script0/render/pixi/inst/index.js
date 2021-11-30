@@ -1,7 +1,4 @@
-import put from "./put";
-import set from './set';
-import clear from './clear';
-import hand from './hand';
-export default {
-  put,set,clear,hand
-};
+import "./put";
+import './set';
+import './clear';
+import './hand';

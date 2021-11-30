@@ -40,8 +40,6 @@ let keywords={
   'se':'se',
   '效果音':'se',
 };
-//修复没有和页面交互不能播放声音的补丁
-import './playpatch';
 export default{
   keywords
 }

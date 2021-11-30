@@ -27,4 +27,6 @@ hand {
 };
 ```
 # 接口
-见代码
+postCode,
+prepareCode,
+getWindow

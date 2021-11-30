@@ -1,12 +1,5 @@
+import config from './config';
 let env={};
-import * as PIXI from 'pixi.js';
-env.PIXI=PIXI;
-console.log(window.env=env);
-/**
- * 事件
- */
-import Event from '../../../../../lib/eventsys';
-env.event=Event.EventSys();
 /**
  * 返回窗口信息
  * {x,y,w,h}
@@ -18,7 +11,7 @@ function signal(element){
   let y=view.offsetTop+view.clientTop;
   let w=view.offsetWidth;
   let h=view.offsetHeight;
-  info={x,y,w,h};
+  info.x=x,info.y=y,info.w=w,info.h=h;
 }
 let getWindow=()=>info;
 env.windowInfo={signal,getWindow};
@@ -26,15 +19,17 @@ env.windowInfo={signal,getWindow};
  * 修改窗口
  * 支持修改位置
  */
-export function modifyWindow(canvas){
+if(!config.toResize)console.warn('cant response resize');
+else config.toResize(canvas=>{
   env.app.resizeTo=canvas;
   env.windowInfo.signal(canvas);
-}
+});
 /**
  * 启动这个模块
  */
 env.app=null;
-export function launch(view){
+if(!config.toLaunch)console.error('canvas needed');
+config.toLaunch(view=>{
   env.app=new PIXI.Application({
     view,
     width:view.width,
@@ -42,13 +37,14 @@ export function launch(view){
   });
   env.app.stage.sortableChildren=true;
   env.windowInfo.signal(view);
-}
-/**
- * 所有画布中的元素
- */
+});
+import * as PIXI from 'pixi.js';
+env.PIXI=PIXI;
+import gEnv from '../../../env';
+env.event=gEnv.event;
 env.sprites=new Map;
-/**
- * 所有正在运行的动画
- */
 env.animates=new Map;
+env.insts={};
+import cache from './cache';
+env.cache=cache;
 export default env;

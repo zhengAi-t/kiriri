@@ -1,4 +1,5 @@
-import {launch,modifyWindow} from './env';
+let launch=()=>void(0);
+let resize=()=>void(0);
 //游戏屏幕比例
 let screenType=1920/1080;
 function start(){
@@ -24,3 +25,14 @@ function start(){
   //永远不响应改变窗口大小
 }
 window.addEventListener("DOMContentLoaded",start);
+let config={
+  /**
+   * 修复启动时序，应当在引擎启动之后立即给出画面输出的元素
+   */
+  toLaunch:launch_=>launch=launch_,
+  /**
+   * 选择何时改变画面输出的大小（或者位置）
+   */
+  toResize:resize_=>resize=resize_
+}
+export default config;

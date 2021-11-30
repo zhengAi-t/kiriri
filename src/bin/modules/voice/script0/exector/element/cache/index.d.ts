@@ -4,6 +4,9 @@ interface CacheItem{
   size:number;
   filename:string;
 }
-export default interface Cache{
+interface Cache{
   get(filename:string):CacheItem;
 }
+function get(name:string):any;
+declare var cache={get};
+export default cache;

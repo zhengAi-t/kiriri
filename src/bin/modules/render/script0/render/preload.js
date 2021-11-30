@@ -3,15 +3,15 @@
  */
 let queue=[];
 let isworking=false;//是否正在运行准备程序
-import cache from "./cache";
+import config from './config';
 function work(){
   isworking=true;
   while(queue.length&&!queue[0].inst.file)queue.shift();
   if(!queue.length)return void(isworking=false);
   let file=queue.shift().inst.file;
-  cache.getTexture(file).then(work).catch(()=>console.error('fi  le get error'));
+  config.render.get(file).then(work).catch(()=>console.error('file.get error'));
 }
-import compile from "../../compile";
+import compile from "../compile";
 function prepareCode(content,index){
   while(queue.length&&queue[0].index<=index)queue.shift();
   queue.splice(queue.length,0,...[].concat(...content.map(s=>{

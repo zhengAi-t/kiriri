@@ -6,6 +6,8 @@ export interface Event{
   on(name:string,callback:Function):void;
   once(name:string,callback:Function):void;
 }
-export default interface EventInit {
+interface EventInit {
   EventSys():Event;
 }
+declare var eventInit:EventInit;
+export default eventInit;

@@ -1,4 +1,4 @@
-import application from '../../../buildup';
+import application from '../../../../../buildup';
 let config={
   cacheName:'voice-url',
   getItem:async function(filename){

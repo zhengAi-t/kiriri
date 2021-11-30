@@ -1,12 +1,8 @@
-import pending from '../pending';
 import env from '../env';
-import animate from '../animate';
-import keyword from './config';
-let mixName=keyword.mixName;
-let set={};
-set.default=function(inst){
+import config from './config';
+env.insts.set={};
+env.insts.set.default=function(inst){
   let item=env.sprites.get(inst.id);
-  if(!item)return pending.setInstSleep(inst);
   let sprite=item.sprite;
   let frame=env.windowInfo.getWindow();
   let checkAttr=attr=>attr&&typeof attr.from!=='number';
@@ -20,7 +16,7 @@ set.default=function(inst){
   if(inst.color)sprite.style.fill=inst.color;
   if(typeof inst.text!=='undefined')sprite.text=String(inst.text);
   if(typeof inst.mix==='string'){
-    let mode=PIXI.BLEND_MODES[mixName[inst.mix.toUpperCase()]];
+    let mode=PIXI.BLEND_MODES[config.mixName[inst.mix.toUpperCase()]];
     sprite.blendMode=mode||0;
   }
   if(typeof inst.mask!=='undefined'&&env.sprites.has(inst.mask)){
@@ -29,7 +25,7 @@ set.default=function(inst){
     sprite.mask=mask;
   }
   if(typeof inst.ease!=='number'||!(inst.ease>0))return;
-  let animateHandl=animate.createAnimate(inst);
+  let animateHandl=env.Animate.createAnimate(inst);
   if(!item.animate)item.animate=new Set;
   item.animate.add(animateHandl);
 }

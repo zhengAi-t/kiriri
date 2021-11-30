@@ -1,12 +1,10 @@
-import pending from '../pending';
 import env from '../env';
 import config from './config';
 import * as PIXI from 'pixi.js';
-import cache from '../cache';
-let put={};
-put.picture=async function(inst){
+env.insts.put={};
+env.insts.put.picture=function(inst,files){
   let app=env.app;
-  let result=await cache.getTexture(inst.file);
+  let result=files.get(inst.file);
   let sprite=new PIXI.Sprite(result);
   let frame=env.windowInfo.getWindow();
   if(inst.rotate)sprite.rotation=inst.rotate;
@@ -23,9 +21,8 @@ put.picture=async function(inst){
   app.stage.addChild(sprite);
   let storeName=inst.id===undefined?'hide#iijds_9':inst.id;
   env.sprites.set(storeName,{sprite});
-  pending.wakeSleepInst(storeName);
 }
-put.text=function(inst){
+env.insts.put.text=function(inst){
   let sprite=new PIXI.Text(inst.text);
   let frame=env.windowInfo.getWindow();
   if(inst.rotate)sprite.rotation=inst.rotate;
@@ -50,7 +47,6 @@ put.text=function(inst){
   env.app.stage.addChild(sprite);
   let storeName=inst.id===undefined?'hide#iijds_9':inst.id;
   env.sprites.set(storeName,{sprite});
-  pending.wakeSleepInst(storeName);
 }
 put.video=async function(inst){
   //因为视频性能问题没有解决

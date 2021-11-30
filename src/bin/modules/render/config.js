@@ -1,4 +1,7 @@
+//选择的语法
 import renderVersion from './script0';
-import Render from './render';
-let render=Render.init({render:renderVersion});
-export default render;
+
+let config={
+  script:renderVersion
+}
+export default config;
