@@ -42,6 +42,9 @@ interface Core{
    * requestScript
    * requestScriptReturn
    * requestExtension
+   * ScriptEnd
+   * locked
+   * unlocked
    * ...
    */
   event:Eventsys,
