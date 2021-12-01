@@ -13,13 +13,9 @@ let config={
     URL.revokeObjectURL(item.url);
   }
 };
-let cache;
-async function initCache(){
-  let init=await application.cache;
-  cache=init.createCache(config);
-}
+let cache=application.cache.then(init=>init.createCache(config));
 async function get(name){
-  if(!cache) await initCache();
+  if(cache.constructor===Promise) cache= await cache;
   return (await cache.get(name)).url;
 }
 export default {get};

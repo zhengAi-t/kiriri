@@ -19,13 +19,9 @@ let config={
     item.texture.destory(true);
   }
 };
-let cache;
-async function initCache(){
-  let init=await application.cache;
-  cache=init.createCache(config);
-}
+let cache=application.cache.then(init=>init.createCache(config));
 async function getTexture(filename){
-  if(!cache) await initCache();
+  if(cache.constructor===Promise)cache=await cache;
   return (await cache.get(filename)).texture;
 }
 export default {

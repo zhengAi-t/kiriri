@@ -12,11 +12,11 @@ import microTask from '../../lib/microTask';
  * stack[] {filename,name,content,index}
  */
 env.process=function(){
-  if(env.isRunning)return console.error('start twice');
-  env.isRunning=true;
-  if(env.locked>0)return;
   //防止事件顺序出错
   microTask.microTask(()=>{
+    if(env.isRunning)return console.error('start twice');
+    env.isRunning=true;
+    if(env.locked>0)return;
     let top=env.stack[env.stack.length-1];
     let content=top.content;
     let length=content.length;
@@ -116,7 +116,9 @@ function unlock(){
   env.locked--;
   if(env.locked>0)return;
   env.event.emit('unlocked');
-  if(env.isRunning)env.process();
+  if(!env.isRunning)return;
+  env.isRunning=false;
+  env.process();
 }
 /**
  * 长臂干涉状态

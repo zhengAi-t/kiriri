@@ -37,7 +37,7 @@ function createQueue(config){
     }
     let item=queue.shift();
     queueMap.delete(item.id);
-    await config.work(item.item);
+    await config.worker(item.item);
     work();
   }
   return{push,cancel,pause,goOn,tasks:queueMap};
