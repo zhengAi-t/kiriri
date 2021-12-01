@@ -7,7 +7,7 @@ function parseBreak(content){
     env.ignoreSpace();
     let char=env.code[env.index];
     if(char===';')break;
-    if(char==='\''||char==='\"')inst.data.paras.push(env.getString());
+    if(char==='\''||char==='"')inst.data.paras.push(env.getString());
     else if(!char.match(/[\r\n\s]/)){
       let text=env.getAnyText();
       let testNum=Number(text);

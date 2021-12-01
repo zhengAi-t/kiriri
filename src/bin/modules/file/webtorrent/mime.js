@@ -56,7 +56,6 @@ let mime={
   "tif":"image/tiff",
   "tiff":"image/tiff",
   "ttf":"font/ttf",
-  "txt":"text/plain",
   "vsd":"application/vnd.visio",
   "wav":"audio/wav",
   "weba":"audio/webm",

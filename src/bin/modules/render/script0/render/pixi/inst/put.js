@@ -48,12 +48,12 @@ env.insts.put.text=function(inst){
   let storeName=inst.id===undefined?'hide#iijds_9':inst.id;
   env.sprites.set(storeName,{sprite});
 }
-put.video=async function(inst){
+env.insts.put.video=async function(inst){
   //因为视频性能问题没有解决
   console.warn('unresolve');
   return false;
 }
-put.shape=function(inst){
+env.insts.put.shape=function(inst){
   let sprite=new PIXI.Graphics();
   let storeName=inst.id===undefined?'hide#iijds_9':inst.id;
   env.sprites.set(storeName,{sprite});
@@ -112,4 +112,3 @@ shapesInst['ellipse']=function(inst,sprite,frame){
   let height=typeof inst.height==='number'?height*frame.h:frame.h;
   sprite.drawEllipse(sprite.x+sprite.width/2,sprite.y+sprite.height/2,width,height);
 }
-export default put;

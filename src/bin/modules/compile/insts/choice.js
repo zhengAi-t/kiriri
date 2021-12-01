@@ -9,7 +9,7 @@ function parseChoice(content){
   env.ignoreSpace();
   let choices=[];
   let chName;
-  while(chName=env.getString()){
+  while((chName=env.getString())){
     choices.push({name:chName});
     env.ignoreSpace();
   }
@@ -19,7 +19,7 @@ function parseChoice(content){
   let rollback=env.index;
   while(maxCount--){
     env.ignoreBlank();
-    if(code[env.index]!=='#')break;
+    if(env.code[env.index]!=='#')break;
     env.index++;
     let keyword=env.getKeyword();
     if(keyword!=='ch')break;

@@ -19,10 +19,10 @@ function remove(name){
   if(!name)return files.remove({});
   return files.remove({name});
 }
-function writeStream(name){
+function writeStream(){
   return void(console.warn('method is not supported'));
 }
-function readStream(name){
+function readStream(){
   return void(console.warn('method is not supported'));
 }
 export default globalThis.indexedDB?{

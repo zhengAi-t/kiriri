@@ -16,7 +16,7 @@ env.insts.set.default=function(inst){
   if(inst.color)sprite.style.fill=inst.color;
   if(typeof inst.text!=='undefined')sprite.text=String(inst.text);
   if(typeof inst.mix==='string'){
-    let mode=PIXI.BLEND_MODES[config.mixName[inst.mix.toUpperCase()]];
+    let mode=env.PIXI.BLEND_MODES[config.mixName[inst.mix.toUpperCase()]];
     sprite.blendMode=mode||0;
   }
   if(typeof inst.mask!=='undefined'&&env.sprites.has(inst.mask)){
@@ -29,4 +29,3 @@ env.insts.set.default=function(inst){
   if(!item.animate)item.animate=new Set;
   item.animate.add(animateHandl);
 }
-export default set;

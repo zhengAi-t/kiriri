@@ -16,7 +16,7 @@ function parseDialog(content){
     let text=env.getText();
     inst.data.text=text;
   }
-  if(!inst.data.text||inst.data.text.match(/[#\{\}\;\[\]]/))console.warn('compile may error');
+  if(!inst.data.text||inst.data.text.match(/[#{};[\]]/))console.warn('compile may error');
   content.push(inst);
 }
 /**

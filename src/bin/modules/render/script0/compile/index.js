@@ -163,13 +163,6 @@ function compile(code){
     index+=match[0].length;
     return num;
   }
-  function getName(){
-    ignoreBlank();
-    let match=code.slice(index).match(/^[^;\r\n\s]+/);
-    index+=match[0].length;
-    let num=Number(match[0]);
-    return num<Infinity?num:match[0];
-  }
   parsers.set=function(){
     let result={opt:'set'};
     while(index<length){

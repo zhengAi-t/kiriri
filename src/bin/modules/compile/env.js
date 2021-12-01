@@ -87,7 +87,7 @@ env.getKeyword=function(){
 env.getString=function(){
   let result=[];
   let begin=env.code[env.index];
-  if(begin!=='\''&&begin!=='\"')return;
+  if(begin!=='\''&&begin!=='"')return;
   env.index++;
   while(env.index<env.length){
     if(env.code[env.index]==='\\')env.index++;

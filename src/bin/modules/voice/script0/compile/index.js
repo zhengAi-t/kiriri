@@ -18,7 +18,7 @@ function parseCode(code){
     }
     code=code.slice(result.length);
     let keyword=converKeyword(result.join(''));
-    if(result.length&&!keyword)console.error('unknown keyword',word)
+    if(result.length&&!keyword)console.error('unknown keyword',result.join(''));
     return keyword;
   }
   function parseHand(){

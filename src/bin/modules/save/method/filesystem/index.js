@@ -24,6 +24,9 @@ function readStream(name){
   if(!name)return void(console.error('name is needed'));
   return fs_.createReadStream(config.savePath+'/'+name);
 }
+function encode(value){
+  console.error('未实现');
+}
 export default globalThis.process?{
   save,writeStream,readStream,read,remove
 }:undefined;

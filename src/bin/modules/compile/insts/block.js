@@ -1,6 +1,6 @@
 import env from "../env";
 env.parses2.set('block',parseBlock);
-function parseBlock(content){
+function parseBlock(){
   env.ignoreSpace();
   let name=env.getString();
   env.ignoreBlank();

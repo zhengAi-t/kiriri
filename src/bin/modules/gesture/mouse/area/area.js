@@ -91,7 +91,7 @@ export function dispatch(name,x,y){
  */
 function patch(x,y){
   let top=chain.top();
-  let inOk=false,outOk=false,moveOk=false;
+  let inOk=false,outOk=false;
   while(top){
     let node=top.node;
     top=top.after;

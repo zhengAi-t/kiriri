@@ -30,7 +30,7 @@ function parseVoiceSingal(content){
       env.index++;
       continue;
     }
-    if(char==='\''||char==='\"')inString=!inString;
+    if(char==='\''||char==='"')inString=!inString;
     else if(!inString&&char===';')break;
     result.push(char);
     env.index++;
