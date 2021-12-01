@@ -50,7 +50,7 @@ env.insts.put.text=function(inst){
 }
 env.insts.put.video=async function(inst){
   //因为视频性能问题没有解决
-  console.warn('unresolve');
+  console.error('unresolve');
   return false;
 }
 env.insts.put.shape=function(inst){

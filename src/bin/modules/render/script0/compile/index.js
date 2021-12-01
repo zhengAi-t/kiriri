@@ -156,7 +156,7 @@ function compile(code){
   }
   function getNumber(){
     ignoreBlank();
-    let match=code.slice(index).match(/^[\d.\-\+]+/);
+    let match=code.slice(index).match(/^[\d.\-+]+/);
     if(!match)return;
     let num=Number(match[0]);
     if(!(num<Infinity))return;
